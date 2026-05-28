@@ -478,13 +478,15 @@ body::before {
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-.check-item.checked .pill-toggle {
+.check-item.checked .pill-toggle,
+.supplement-item.checked .pill-toggle {
   background: rgba(134, 239, 172, 0.25);
   border-color: rgba(134, 239, 172, 0.3);
   box-shadow: 0 0 16px rgba(134, 239, 172, 0.15);
 }
 
-.check-item.checked .pill-toggle::after {
+.check-item.checked .pill-toggle::after,
+.supplement-item.checked .pill-toggle::after {
   left: 23px;
   background: var(--green);
   box-shadow: 0 0 8px rgba(134, 239, 172, 0.4), 0 1px 3px rgba(0,0,0,0.3);
@@ -1395,6 +1397,179 @@ input[type="range"]::-moz-range-thumb {
   font-weight: 700;
 }
 
+/* ====== WEEK BAR ====== */
+.week-bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.week-bar {
+  display: flex;
+  gap: 4px;
+  width: 160px;
+}
+
+.week-bar-segment {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(100, 116, 139, 0.15);
+  transition: var(--transition);
+}
+
+.week-bar-segment.completed {
+  background: var(--green);
+  box-shadow: 0 0 6px rgba(134, 239, 172, 0.2);
+}
+
+.week-bar-segment.current {
+  background: linear-gradient(90deg, var(--green), var(--green-bright));
+  box-shadow: 0 0 8px rgba(134, 239, 172, 0.25);
+}
+
+.week-bar-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ====== ROLLING AVERAGE ====== */
+.rolling-avg {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-top: 10px;
+  padding: 6px 14px;
+  background: rgba(134, 239, 172, 0.04);
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.rolling-avg strong {
+  color: var(--green);
+  font-weight: 700;
+}
+
+/* ====== HERO RING CELEBRATION ====== */
+.progress-ring-wrap.celebration-glow {
+  animation: ringCelebrate 2s ease-in-out;
+}
+
+@keyframes ringCelebrate {
+  0% { filter: drop-shadow(0 0 20px rgba(134, 239, 172, 0.15)); }
+  30% { filter: drop-shadow(0 0 40px rgba(134, 239, 172, 0.5)) drop-shadow(0 0 80px rgba(134, 239, 172, 0.25)); }
+  60% { filter: drop-shadow(0 0 35px rgba(134, 239, 172, 0.4)) drop-shadow(0 0 60px rgba(134, 239, 172, 0.15)); }
+  100% { filter: drop-shadow(0 0 20px rgba(134, 239, 172, 0.15)); }
+}
+
+/* ====== DAILY FIVE CARD GOLDEN FLASH ====== */
+@keyframes goldenFlash {
+  0% { border-color: rgba(134, 239, 172, 0.18); }
+  25% { border-color: rgba(251, 191, 36, 0.6); box-shadow: var(--shadow), 0 0 30px rgba(251, 191, 36, 0.15); }
+  75% { border-color: rgba(251, 191, 36, 0.4); box-shadow: var(--shadow), 0 0 20px rgba(251, 191, 36, 0.08); }
+  100% { border-color: rgba(134, 239, 172, 0.18); box-shadow: var(--shadow); }
+}
+
+.card.all-done-flash {
+  animation: goldenFlash 1.5s ease-in-out;
+}
+
+/* ====== WEEKLY STREAK BADGES ====== */
+.week-streak-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.week-streak-current {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, rgba(134,239,172,0.06), rgba(94,234,212,0.06));
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(134, 239, 172, 0.1);
+}
+
+.week-streak-number {
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--green);
+  line-height: 1;
+  letter-spacing: -1px;
+  min-width: 50px;
+}
+
+.week-streak-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.week-streak-bar-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.week-streak-bar-track {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(100, 116, 139, 0.15);
+  overflow: hidden;
+}
+
+.week-streak-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--green), var(--green-bright));
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.week-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.week-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-xs);
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(100, 116, 139, 0.08);
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.week-badge.completed {
+  background: rgba(134, 239, 172, 0.08);
+  color: var(--green);
+  border-color: rgba(134, 239, 172, 0.15);
+}
+
+.week-badge.perfect {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--amber);
+  border-color: rgba(251, 191, 36, 0.2);
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.08), 0 0 32px rgba(251, 191, 36, 0.04);
+}
+
+.week-badge.future {
+  opacity: 0.35;
+}
+
 /* ====== TOAST ====== */
 .toast {
   position: fixed;
@@ -1538,7 +1713,7 @@ input[type="range"]::-moz-range-thumb {
   .progress-ring-wrap { width: 130px; height: 130px; }
   .progress-ring-text { font-size: 30px; }
   .slider-emoji { font-size: 34px; }
-  .streak-number { font-size: 44px; }
+  .week-streak-number { font-size: 34px; }
 }
 </style>
 </head>
@@ -1560,7 +1735,7 @@ input[type="range"]::-moz-range-thumb {
       <span id="header-day"></span>
     </div>
     <div class="progress-ring-container">
-      <div class="progress-ring-wrap">
+      <div class="progress-ring-wrap" id="progress-ring-wrap">
         <svg class="progress-ring" width="148" height="148">
           <defs>
             <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1573,7 +1748,12 @@ input[type="range"]::-moz-range-thumb {
         </svg>
         <span class="progress-ring-text" id="progress-pct">0%</span>
       </div>
-      <span class="progress-ring-label">Overall Progress</span>
+      <span class="progress-ring-label">Today's Progress</span>
+      <div class="week-bar-container">
+        <div class="week-bar" id="week-bar"></div>
+        <span class="week-bar-label" id="week-bar-label">Week 1 of 4</span>
+      </div>
+      <span class="rolling-avg" id="rolling-avg" style="display:none;"></span>
     </div>
   </header>
 
@@ -1720,13 +1900,7 @@ input[type="range"]::-moz-range-thumb {
     <div class="card-header">
       <span class="card-title"><span class="icon">&#128200;</span> 4-Week Progress</span>
     </div>
-    <div class="streak-display">
-      <span class="streak-number" id="streak-number">0</span>
-      <span class="streak-label">
-        day streak
-        <span>consecutive days with all Daily Five</span>
-      </span>
-    </div>
+    <div class="week-streak-container" id="week-streak-container"></div>
     <div class="week-grid" style="margin-bottom: 4px;">
       <span class="week-day-header">M</span>
       <span class="week-day-header">T</span>
@@ -2002,12 +2176,60 @@ input[type="range"]::-moz-range-thumb {
     return Math.round((done / total) * 100);
   }
 
-  function overallProgressPct() {
+  function todayCompletionPct() {
+    const ds = dateStr(currentDate);
+    return dayCompletionPct(ds);
+  }
+
+  function rollingAvg7Days() {
     const today = new Date();
-    const totalDays = 28;
-    let daysElapsed = daysBetween(startDate, today) + 1;
-    daysElapsed = Math.max(0, Math.min(daysElapsed, totalDays));
-    return Math.round((daysElapsed / totalDays) * 100);
+    let total = 0;
+    let count = 0;
+    for (let i = 0; i < 7; i++) {
+      const d = addDays(today, -i);
+      const ds = dateStr(d);
+      if (allData[ds]) {
+        total += dayCompletionPct(ds);
+        count++;
+      }
+    }
+    if (count === 0) return -1;
+    return Math.round(total / count);
+  }
+
+  function getCurrentWeekNum() {
+    const today = new Date();
+    const elapsed = daysBetween(startDate, today);
+    return Math.min(4, Math.max(1, Math.floor(elapsed / 7) + 1));
+  }
+
+  function getWeekDaysCompleted(weekNum) {
+    // weekNum is 1-based
+    const weekStart = addDays(startDate, (weekNum - 1) * 7);
+    const today = new Date();
+    let count = 0;
+    for (let i = 0; i < 7; i++) {
+      const d = addDays(weekStart, i);
+      if (daysBetween(today, d) > 0) continue; // future
+      const ds = dateStr(d);
+      const data = allData[ds];
+      if (data && data.dailyFive && data.dailyFive.every(Boolean)) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  function isWeekComplete(weekNum) {
+    const today = new Date();
+    const weekEnd = addDays(startDate, weekNum * 7 - 1);
+    return daysBetween(today, weekEnd) < 0; // weekEnd is in the past
+  }
+
+  function isWeekFuture(weekNum) {
+    const today = new Date();
+    const weekStart = addDays(startDate, (weekNum - 1) * 7);
+    return daysBetween(today, weekStart) > 0;
   }
 
   function calculateStreak() {
@@ -2081,12 +2303,35 @@ input[type="range"]::-moz-range-thumb {
     document.getElementById('header-week').textContent = 'Week ' + weekNum;
     document.getElementById('header-day').textContent = 'Day ' + dayNum;
 
-    const pct = overallProgressPct();
+    // Hero ring = today's completion
+    const pct = todayCompletionPct();
     document.getElementById('progress-pct').textContent = pct + '%';
     const circle = document.getElementById('progress-fill');
     const circumference = 2 * Math.PI * 62;
     const offset = circumference - (pct / 100) * circumference;
     setTimeout(() => { circle.style.strokeDashoffset = offset; }, 100);
+
+    // Week bar
+    const weekBar = document.getElementById('week-bar');
+    weekBar.innerHTML = '';
+    for (let w = 1; w <= 4; w++) {
+      const seg = document.createElement('div');
+      seg.className = 'week-bar-segment';
+      if (w < weekNum) seg.classList.add('completed');
+      else if (w === weekNum) seg.classList.add('current');
+      weekBar.appendChild(seg);
+    }
+    document.getElementById('week-bar-label').textContent = 'Week ' + weekNum + ' of 4';
+
+    // Rolling average
+    const avg = rollingAvg7Days();
+    const avgEl = document.getElementById('rolling-avg');
+    if (avg >= 0) {
+      avgEl.innerHTML = 'Last 7 days: <strong>' + avg + '% avg</strong>';
+      avgEl.style.display = 'inline-block';
+    } else {
+      avgEl.style.display = 'none';
+    }
   }
 
   // ====== Day Navigation ======
@@ -2132,6 +2377,7 @@ input[type="range"]::-moz-range-thumb {
         renderWeekGrid();
         renderHeatmap();
         renderHeader();
+        checkAllDoneCelebration();
       });
 
       list.appendChild(item);
@@ -2413,6 +2659,8 @@ input[type="range"]::-moz-range-thumb {
         renderNutrition();
         renderWeekGrid();
         renderHeatmap();
+        renderHeader();
+        checkAllDoneCelebration();
       });
 
       list.appendChild(item);
@@ -2445,6 +2693,8 @@ input[type="range"]::-moz-range-thumb {
         renderSupplements();
         renderWeekGrid();
         renderHeatmap();
+        renderHeader();
+        checkAllDoneCelebration();
       });
 
       list.appendChild(item);
@@ -2531,6 +2781,7 @@ input[type="range"]::-moz-range-thumb {
       const isInPlan = planDay >= 0 && planDay < 28;
       const isToday = dateStr(today) === ds;
       const pct = isInPlan ? dayCompletionPct(ds) : 0;
+      const hasAnyData = allData[ds] !== undefined;
 
       let bg, color;
       if (!isInPlan) {
@@ -2539,9 +2790,14 @@ input[type="range"]::-moz-range-thumb {
       } else if (isFuture) {
         bg = 'rgba(100, 116, 139, 0.05)';
         color = 'rgba(100, 116, 139, 0.3)';
-      } else if (pct === 0) {
+      } else if (pct === 0 && !hasAnyData) {
+        // Truly zero: no data logged at all. Gray.
         bg = 'rgba(100, 116, 139, 0.07)';
         color = 'var(--text-muted)';
+      } else if (pct === 0 && hasAnyData) {
+        // Data exists but nothing checked: still amber (they engaged)
+        bg = 'rgba(251, 191, 36, 0.08)';
+        color = 'rgba(251, 191, 36, 0.6)';
       } else if (pct < 40) {
         bg = 'rgba(251, 191, 36, 0.12)';
         color = 'var(--amber)';
@@ -2576,9 +2832,51 @@ input[type="range"]::-moz-range-thumb {
       heatmap.appendChild(cell);
     }
 
-    // Streak with animation
-    const streak = calculateStreak();
-    animateNumber(document.getElementById('streak-number'), streak);
+    // Weekly streak badges
+    renderWeekStreaks();
+  }
+
+  // ====== Weekly Streak System ======
+  function renderWeekStreaks() {
+    const container = document.getElementById('week-streak-container');
+    container.innerHTML = '';
+
+    const currentWeek = getCurrentWeekNum();
+
+    // Current week progress
+    const currentDays = getWeekDaysCompleted(currentWeek);
+    const currentEl = document.createElement('div');
+    currentEl.className = 'week-streak-current';
+    currentEl.innerHTML =
+      '<span class="week-streak-number">' + currentDays + '</span>' +
+      '<div class="week-streak-bar">' +
+        '<span class="week-streak-bar-label">This week: ' + currentDays + ' of 7 days</span>' +
+        '<div class="week-streak-bar-track"><div class="week-streak-bar-fill" style="width:' + Math.round((currentDays / 7) * 100) + '%;"></div></div>' +
+      '</div>';
+    container.appendChild(currentEl);
+
+    // Past and future week badges
+    const badgesWrap = document.createElement('div');
+    badgesWrap.className = 'week-badges';
+    for (let w = 1; w <= 4; w++) {
+      if (w === currentWeek) continue;
+      const days = getWeekDaysCompleted(w);
+      const future = isWeekFuture(w);
+      const complete = isWeekComplete(w);
+      const perfect = complete && days === 7;
+
+      const badge = document.createElement('div');
+      let cls = 'week-badge';
+      if (future) cls += ' future';
+      else if (perfect) cls += ' perfect';
+      else if (complete) cls += ' completed';
+      badge.className = cls;
+      badge.textContent = 'Week ' + w + ': ' + (future ? '...' : days + '/7');
+      badgesWrap.appendChild(badge);
+    }
+    if (badgesWrap.children.length > 0) {
+      container.appendChild(badgesWrap);
+    }
   }
 
   // ====== Signs ======
@@ -2646,6 +2944,34 @@ input[type="range"]::-moz-range-thumb {
         saveLabs();
       });
     });
+  }
+
+  // ====== All-Done Celebration ======
+  let lastCelebrationDate = null;
+
+  function checkAllDoneCelebration() {
+    const ds = dateStr(currentDate);
+    const pct = dayCompletionPct(ds);
+    if (pct === 100 && lastCelebrationDate !== ds) {
+      lastCelebrationDate = ds;
+
+      // Ring glow
+      const ringWrap = document.getElementById('progress-ring-wrap');
+      ringWrap.classList.remove('celebration-glow');
+      void ringWrap.offsetWidth;
+      ringWrap.classList.add('celebration-glow');
+      setTimeout(() => ringWrap.classList.remove('celebration-glow'), 2200);
+
+      // Daily Five card golden flash
+      const dfCard = document.getElementById('daily-five-card');
+      dfCard.classList.remove('all-done-flash');
+      void dfCard.offsetWidth;
+      dfCard.classList.add('all-done-flash');
+      setTimeout(() => dfCard.classList.remove('all-done-flash'), 1600);
+
+      // Calm toast
+      showToast('All done for today');
+    }
   }
 
   // ====== Hydration Cue ======
