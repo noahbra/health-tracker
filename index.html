@@ -1,0 +1,2900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>4-Week Health Reset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #080c18;
+  --bg-secondary: #111827;
+  --bg-card: rgba(17, 24, 39, 0.65);
+  --bg-card-hover: rgba(17, 24, 39, 0.85);
+  --bg-glass: rgba(17, 24, 39, 0.5);
+  --bg-inner: rgba(8, 12, 24, 0.5);
+  --border-glass: rgba(148, 163, 184, 0.10);
+  --border-gradient: rgba(148, 163, 184, 0.15);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --green: #86efac;
+  --green-dim: rgba(134, 239, 172, 0.12);
+  --green-glow: rgba(134, 239, 172, 0.35);
+  --green-bright: #4ade80;
+  --amber: #fbbf24;
+  --amber-dim: rgba(251, 191, 36, 0.12);
+  --red: #f87171;
+  --red-dim: rgba(248, 113, 113, 0.12);
+  --blue: #93c5fd;
+  --blue-dim: rgba(147, 197, 253, 0.12);
+  --purple: #c4b5fd;
+  --purple-dim: rgba(196, 181, 253, 0.12);
+  --orange: #fdba74;
+  --orange-dim: rgba(253, 186, 116, 0.12);
+  --yellow: #fde68a;
+  --yellow-dim: rgba(253, 230, 138, 0.12);
+  --teal: #5eead4;
+  --teal-dim: rgba(94, 234, 212, 0.12);
+  --radius: 20px;
+  --radius-sm: 14px;
+  --radius-xs: 8px;
+  --shadow: 0 4px 32px rgba(0,0,0,0.35);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
+  --shadow-glow-green: 0 0 30px rgba(134, 239, 172, 0.15);
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-spring: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animated gradient background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(134, 239, 172, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(147, 197, 253, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(196, 181, 253, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: bgShift 15s ease-in-out infinite alternate;
+}
+
+@keyframes bgShift {
+  0% {
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(134, 239, 172, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(147, 197, 253, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(196, 181, 253, 0.03) 0%, transparent 50%);
+  }
+  33% {
+    background:
+      radial-gradient(ellipse at 60% 20%, rgba(94, 234, 212, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 30% 80%, rgba(134, 239, 172, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 60%, rgba(251, 191, 36, 0.03) 0%, transparent 50%);
+  }
+  66% {
+    background:
+      radial-gradient(ellipse at 40% 30%, rgba(147, 197, 253, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 70%, rgba(196, 181, 253, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 60%, rgba(253, 186, 116, 0.03) 0%, transparent 50%);
+  }
+  100% {
+    background:
+      radial-gradient(ellipse at 80% 15%, rgba(134, 239, 172, 0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 85%, rgba(94, 234, 212, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 40%, rgba(147, 197, 253, 0.04) 0%, transparent 50%);
+  }
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ====== HEADER ====== */
+.header {
+  padding: 48px 0 36px;
+  text-align: center;
+  position: relative;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.pulse-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--green-glow); opacity: 1; }
+  50% { box-shadow: 0 0 0 10px rgba(134,239,172,0); opacity: 0.8; }
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.75px;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+
+.header-meta .divider {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+/* Hero progress ring */
+.progress-ring-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-ring-wrap {
+  position: relative;
+  width: 148px;
+  height: 148px;
+  filter: drop-shadow(0 0 20px rgba(134, 239, 172, 0.15));
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+  fill: none;
+  stroke: rgba(148, 163, 184, 0.08);
+  stroke-width: 8;
+}
+
+.progress-ring-fill {
+  fill: none;
+  stroke: url(#progressGradient);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 389;
+  stroke-dashoffset: 389;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-ring-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -1px;
+}
+
+.progress-ring-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* ====== DAY NAVIGATION ====== */
+.day-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.day-nav::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(134, 239, 172, 0.3), transparent);
+}
+
+.day-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  background: rgba(15, 23, 42, 0.4);
+  color: var(--text-secondary);
+  font-size: 18px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-nav-btn:hover {
+  background: rgba(134, 239, 172, 0.12);
+  color: var(--green);
+  border-color: rgba(134, 239, 172, 0.25);
+}
+
+.day-nav-btn:active { transform: scale(0.9); }
+
+.day-nav-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.day-nav-date {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 180px;
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+
+.day-nav-today {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: var(--green-dim);
+  border: 1px solid rgba(134, 239, 172, 0.2);
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.day-nav-today:hover { background: rgba(134, 239, 172, 0.2); }
+
+/* ====== CONTEXTUAL BANNERS ====== */
+.context-banners {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.context-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: var(--radius-xs);
+  font-size: 13px;
+  font-weight: 400;
+  transition: opacity 0.5s ease;
+}
+
+.context-banner.blue {
+  background: rgba(147, 197, 253, 0.06);
+  border: 1px solid rgba(147, 197, 253, 0.1);
+  color: rgba(147, 197, 253, 0.8);
+}
+
+/* ====== CARDS ====== */
+.card {
+  background: var(--bg-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-gradient), transparent);
+  opacity: 0.6;
+}
+
+/* Left accent borders per section */
+.card[data-accent="green"] { border-left: 3px solid rgba(134, 239, 172, 0.4); }
+.card[data-accent="blue"] { border-left: 3px solid rgba(147, 197, 253, 0.4); }
+.card[data-accent="red"] { border-left: 3px solid rgba(248, 113, 113, 0.35); }
+.card[data-accent="orange"] { border-left: 3px solid rgba(253, 186, 116, 0.4); }
+.card[data-accent="purple"] { border-left: 3px solid rgba(196, 181, 253, 0.4); }
+.card[data-accent="yellow"] { border-left: 3px solid rgba(253, 230, 138, 0.35); }
+.card[data-accent="teal"] { border-left: 3px solid rgba(94, 234, 212, 0.4); }
+
+/* Celebration state for Daily Five */
+.card.celebration {
+  border-color: rgba(251, 191, 36, 0.35);
+  box-shadow: var(--shadow), 0 0 40px rgba(251, 191, 36, 0.08), 0 0 80px rgba(251, 191, 36, 0.04);
+  animation: celebrateGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes celebrateGlow {
+  0% { box-shadow: var(--shadow), 0 0 30px rgba(251, 191, 36, 0.06); }
+  100% { box-shadow: var(--shadow), 0 0 50px rgba(251, 191, 36, 0.12), 0 0 100px rgba(134, 239, 172, 0.05); }
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.06);
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.3px;
+}
+
+.card-title .icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.card-badge {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 24px;
+  background: var(--green-dim);
+  color: var(--green);
+  letter-spacing: 0.3px;
+}
+
+.card-badge.amber {
+  background: var(--amber-dim);
+  color: var(--amber);
+}
+
+/* ====== PILL TOGGLES (Daily Five + Nutrition + Supplements) ====== */
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--bg-inner);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.check-item:hover {
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.check-item:active {
+  transform: scale(0.985);
+}
+
+.check-item.checked {
+  border-color: rgba(134, 239, 172, 0.18);
+  background: rgba(134, 239, 172, 0.08);
+}
+
+/* Pill toggle switch */
+.pill-toggle {
+  width: 48px;
+  height: 28px;
+  border-radius: 14px;
+  background: rgba(100, 116, 139, 0.25);
+  position: relative;
+  flex-shrink: 0;
+  transition: var(--transition);
+  border: 1px solid rgba(100, 116, 139, 0.15);
+}
+
+.pill-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.6);
+  transition: var(--transition-spring);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.check-item.checked .pill-toggle {
+  background: rgba(134, 239, 172, 0.25);
+  border-color: rgba(134, 239, 172, 0.3);
+  box-shadow: 0 0 16px rgba(134, 239, 172, 0.15);
+}
+
+.check-item.checked .pill-toggle::after {
+  left: 23px;
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(134, 239, 172, 0.4), 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.check-label {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.check-item.checked .check-label {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.streak-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--amber);
+  background: var(--amber-dim);
+  padding: 3px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+  transition: var(--transition-bounce);
+  min-width: 28px;
+  text-align: center;
+}
+
+.streak-badge.animate {
+  animation: streakPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes streakPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* ====== QUICK TRACKERS ====== */
+.tracker-row {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.tracker-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tracker-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: -0.1px;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.slider-emoji {
+  font-size: 40px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+  min-width: 48px;
+  text-align: center;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+}
+
+.slider-emoji.bounce {
+  animation: emojiBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes emojiBounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.3) rotate(-5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, rgba(248,113,113,0.3), rgba(251,191,36,0.3), rgba(134,239,172,0.3));
+  outline: none;
+  transition: var(--transition);
+  position: relative;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green), var(--green-bright));
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(134, 239, 172, 0.4), 0 0 20px rgba(134, 239, 172, 0.15);
+  transition: var(--transition-bounce);
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.15);
+  box-shadow: 0 2px 20px rgba(134, 239, 172, 0.5), 0 0 30px rgba(134, 239, 172, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green), var(--green-bright));
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.slider-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  min-width: 32px;
+  text-align: center;
+}
+
+.toggle-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.toggle-btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-glass);
+  background: var(--bg-inner);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.toggle-btn.active {
+  background: var(--green-dim);
+  border-color: rgba(134, 239, 172, 0.3);
+  color: var(--green);
+  box-shadow: 0 0 12px rgba(134, 239, 172, 0.1);
+}
+
+.toggle-btn.active-amber {
+  background: var(--amber-dim);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: var(--amber);
+}
+
+.toggle-btn.active-red {
+  background: var(--red-dim);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: var(--red);
+}
+
+.toggle-btn.active-blue {
+  background: var(--blue-dim);
+  border-color: rgba(147, 197, 253, 0.3);
+  color: var(--blue);
+}
+
+/* ====== BLOOD PRESSURE ====== */
+.bp-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.bp-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bp-input-group label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.bp-input-group input {
+  background: var(--bg-inner);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 12px 14px;
+  text-align: center;
+  outline: none;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.bp-input-group input:focus {
+  border-color: rgba(134, 239, 172, 0.4);
+  box-shadow: 0 0 0 3px rgba(134, 239, 172, 0.08);
+}
+
+.bp-input-group input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.bp-save-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: linear-gradient(135deg, rgba(134,239,172,0.15), rgba(94,234,212,0.15));
+  color: var(--green);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 20px;
+  border: 1px solid rgba(134, 239, 172, 0.15);
+}
+
+.bp-save-btn:hover {
+  background: linear-gradient(135deg, rgba(134,239,172,0.25), rgba(94,234,212,0.25));
+}
+
+.bp-save-btn:active {
+  transform: scale(0.98);
+}
+
+.bp-chart-container {
+  background: var(--bg-inner);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.bp-chart-container.collapsed {
+  max-height: 0;
+  padding: 0 16px;
+  opacity: 0;
+  margin-bottom: 0;
+}
+
+.bp-chart-container canvas {
+  width: 100%;
+  height: 200px;
+}
+
+.bp-trend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: var(--radius-xs);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.bp-trend.improving {
+  background: var(--green-dim);
+  color: var(--green);
+}
+
+.bp-trend.stable {
+  background: var(--blue-dim);
+  color: var(--blue);
+}
+
+.bp-trend.worsening {
+  background: var(--red-dim);
+  color: var(--red);
+}
+
+.bp-trend.no-data {
+  background: rgba(100, 116, 139, 0.08);
+  color: var(--text-muted);
+}
+
+.bp-reading-list {
+  margin-top: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-muted) transparent;
+}
+
+.bp-reading-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: var(--radius-xs);
+  font-size: 13px;
+  margin-bottom: 4px;
+  transition: var(--transition);
+}
+
+.bp-reading-item:nth-child(odd) {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+.bp-reading-values {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.bp-reading-date {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.bp-reading-delete {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: var(--transition);
+  opacity: 0.4;
+}
+
+.bp-reading-delete:hover {
+  opacity: 1;
+  color: var(--red);
+  background: var(--red-dim);
+}
+
+/* ====== NUTRITION / FISH COUNTER ====== */
+.fish-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(147,197,253,0.06), rgba(94,234,212,0.06));
+  border-radius: var(--radius-sm);
+  margin-top: 16px;
+  border: 1px solid rgba(147, 197, 253, 0.1);
+}
+
+.fish-icon {
+  font-size: 36px;
+  filter: drop-shadow(0 2px 6px rgba(147,197,253,0.3));
+}
+
+.fish-count {
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--blue);
+  line-height: 1;
+}
+
+.fish-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ====== SUPPLEMENTS ====== */
+.supplement-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  background: var(--bg-inner);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  margin-bottom: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.supplement-item:active {
+  transform: scale(0.98);
+}
+
+.supplement-item.checked {
+  border-color: rgba(134, 239, 172, 0.18);
+  background: rgba(134, 239, 172, 0.08);
+}
+
+.supplement-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.supplement-dose {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ====== TRAINING NOTES ====== */
+.training-textarea {
+  width: 100%;
+  min-height: 110px;
+  background: var(--bg-inner);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 15px;
+  padding: 16px;
+  outline: none;
+  resize: vertical;
+  transition: var(--transition);
+  line-height: 1.6;
+}
+
+.training-textarea:focus {
+  border-color: rgba(134, 239, 172, 0.25);
+  box-shadow: 0 0 0 3px rgba(134, 239, 172, 0.06);
+}
+
+.training-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.training-reminder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(253, 230, 138, 0.05);
+  border-radius: var(--radius-xs);
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--amber);
+  font-weight: 400;
+  border: 1px solid rgba(253, 230, 138, 0.08);
+}
+
+.joint-ache-toggle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--bg-inner);
+  border-radius: var(--radius-sm);
+  margin-top: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.joint-ache-toggle:active {
+  transform: scale(0.98);
+}
+
+.joint-ache-toggle.active {
+  border-color: rgba(248, 113, 113, 0.25);
+  background: rgba(248, 113, 113, 0.08);
+}
+
+.joint-ache-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Mini toggle for joint ache */
+.mini-toggle {
+  width: 40px;
+  height: 24px;
+  border-radius: 12px;
+  background: rgba(100, 116, 139, 0.25);
+  position: relative;
+  flex-shrink: 0;
+  transition: var(--transition);
+  border: 1px solid rgba(100, 116, 139, 0.15);
+}
+
+.mini-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.5);
+  transition: var(--transition-spring);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.joint-ache-toggle.active .mini-toggle {
+  background: rgba(248, 113, 113, 0.25);
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+.joint-ache-toggle.active .mini-toggle::after {
+  left: 18px;
+  background: var(--red);
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.4);
+}
+
+/* ====== WEEKLY OVERVIEW ====== */
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.week-day-header {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding-bottom: 8px;
+}
+
+.week-day-cell {
+  aspect-ratio: 1;
+  border-radius: var(--radius-xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.week-day-cell:hover {
+  border-color: var(--border-glass);
+  transform: scale(1.08);
+}
+
+.week-day-cell:active {
+  transform: scale(0.95);
+}
+
+.week-day-cell.empty { background: rgba(100, 116, 139, 0.06); color: var(--text-muted); }
+.week-day-cell.low { background: rgba(251, 191, 36, 0.12); color: var(--amber); }
+.week-day-cell.medium { background: rgba(251, 191, 36, 0.22); color: var(--amber); }
+.week-day-cell.high { background: rgba(134, 239, 172, 0.18); color: var(--green); }
+.week-day-cell.complete { background: rgba(134, 239, 172, 0.3); color: var(--green); box-shadow: 0 0 12px rgba(134,239,172,0.08); }
+.week-day-cell.today { border-color: var(--green); box-shadow: 0 0 0 2px rgba(134, 239, 172, 0.15); }
+.week-day-cell.future { opacity: 0.25; cursor: default; }
+
+.week-day-num {
+  font-size: 14px;
+}
+
+/* ====== 4-WEEK HEATMAP ====== */
+.heatmap {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.heatmap-cell {
+  aspect-ratio: 1;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  min-height: 44px;
+}
+
+.heatmap-cell:hover { transform: scale(1.1); }
+.heatmap-cell:active { transform: scale(0.9); }
+
+.streak-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(134,239,172,0.06), rgba(94,234,212,0.06));
+  border-radius: var(--radius-sm);
+  margin-bottom: 22px;
+  border: 1px solid rgba(134, 239, 172, 0.1);
+}
+
+.streak-number {
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--green);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.streak-number.animating {
+  animation: counterPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes counterPop {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.streak-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.streak-label span {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.signs-checklist {
+  margin-top: 18px;
+}
+
+.signs-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  letter-spacing: -0.1px;
+}
+
+.sign-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: var(--radius-xs);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sign-item:hover { background: rgba(15, 23, 42, 0.3); }
+
+.sign-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--text-muted);
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.sign-item.checked .sign-dot {
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 6px rgba(134, 239, 172, 0.3);
+}
+
+.sign-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* ====== LABS TRACKER ====== */
+.lab-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--bg-inner);
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.lab-item[data-status="ordered"] {
+  border-color: rgba(251, 191, 36, 0.12);
+}
+
+.lab-item[data-status="results-in"] {
+  border-color: rgba(134, 239, 172, 0.12);
+}
+
+.lab-info {
+  flex: 1;
+}
+
+.lab-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.lab-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.lab-status-btn {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border-glass);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lab-status-btn:active { transform: scale(0.95); }
+
+.lab-status-btn.ordered {
+  background: var(--amber-dim);
+  border-color: rgba(251, 191, 36, 0.25);
+  color: var(--amber);
+}
+
+.lab-status-btn.results-in {
+  background: var(--green-dim);
+  border-color: rgba(134, 239, 172, 0.25);
+  color: var(--green);
+}
+
+.lab-results-input {
+  width: 100%;
+  margin-top: 10px;
+  background: rgba(8, 12, 24, 0.5);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 10px 14px;
+  outline: none;
+  transition: var(--transition);
+  display: none;
+}
+
+.lab-results-input.visible {
+  display: block;
+}
+
+.lab-results-input:focus {
+  border-color: rgba(134, 239, 172, 0.25);
+}
+
+/* ====== SAMPLE MEAL ====== */
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.collapsible-arrow {
+  transition: var(--transition);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.collapsible-arrow.open {
+  transform: rotate(180deg);
+}
+
+.collapsible-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collapsible-body.open {
+  max-height: 2000px;
+}
+
+.meal-section {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.06);
+}
+
+.meal-section:last-child { border-bottom: none; }
+
+.meal-time {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.meal-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ====== ACTION BUTTONS ====== */
+.action-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.action-btn {
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-glass);
+  background: var(--bg-glass);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.action-btn:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+.action-btn:active { transform: scale(0.96); }
+
+/* ====== MOTTO FOOTER ====== */
+.motto {
+  text-align: center;
+  padding: 48px 24px;
+  position: relative;
+}
+
+.motto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--text-muted), transparent);
+}
+
+.motto-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.motto-text strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* ====== TOAST ====== */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-glass);
+  z-index: 1000;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ====== MODAL ====== */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.show { display: flex; }
+
+.modal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius);
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.modal input[type="date"] {
+  width: 100%;
+  background: var(--bg-inner);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 16px;
+  padding: 12px 14px;
+  outline: none;
+  margin-bottom: 18px;
+}
+
+.modal input[type="date"]:focus {
+  border-color: rgba(134, 239, 172, 0.4);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.modal-btn {
+  padding: 10px 22px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-glass);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.modal-btn.primary {
+  background: var(--green-dim);
+  color: var(--green);
+  border-color: rgba(134, 239, 172, 0.25);
+}
+
+.modal-btn:hover { opacity: 0.85; }
+
+/* ====== SCROLLBAR ====== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 2px; }
+
+/* ====== HIDDEN ====== */
+.file-input-hidden { display: none; }
+
+/* ====== PRINT ====== */
+@media print {
+  body { background: #fff; color: #111; }
+  body::before { display: none; }
+  .card { background: #fff; border: 1px solid #ddd; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; page-break-inside: avoid; }
+  .card::before { display: none; }
+  .action-bar, .day-nav, .bp-save-btn, .bp-reading-delete, .context-banners { display: none; }
+  .check-item.checked { background: #e8f5e9; }
+  .check-item.checked .pill-toggle { background: #4caf50; }
+  .check-label, .text-secondary { color: #333; }
+  .header h1 { color: #111; -webkit-text-fill-color: #111; background: none; }
+  .pulse-dot { animation: none; background: #4caf50; }
+  :root { --text-primary: #111; --text-secondary: #333; --text-muted: #666; }
+  .motto::before { background: #ccc; }
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 480px) {
+  .container { padding: 0 14px 80px; }
+  .header { padding: 32px 0 28px; }
+  .header h1 { font-size: 26px; }
+  .card { padding: 22px; }
+  .bp-inputs { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .bp-input-group input { font-size: 17px; padding: 10px 8px; }
+  .toggle-btn { padding: 8px 14px; font-size: 13px; }
+  .action-bar { gap: 6px; }
+  .action-btn { padding: 10px 14px; font-size: 12px; }
+  .heatmap { gap: 4px; }
+  .heatmap-cell { min-height: 38px; }
+  .progress-ring-wrap { width: 130px; height: 130px; }
+  .progress-ring-text { font-size: 30px; }
+  .slider-emoji { font-size: 34px; }
+  .streak-number { font-size: 44px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top">
+      <span class="pulse-dot"></span>
+      <h1>4-Week Health Reset</h1>
+    </div>
+    <div class="header-meta">
+      <span id="header-date"></span>
+      <span class="divider"></span>
+      <span id="header-week"></span>
+      <span class="divider"></span>
+      <span id="header-day"></span>
+    </div>
+    <div class="progress-ring-container">
+      <div class="progress-ring-wrap">
+        <svg class="progress-ring" width="148" height="148">
+          <defs>
+            <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#86efac;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#5eead4;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <circle class="progress-ring-bg" cx="74" cy="74" r="62" />
+          <circle class="progress-ring-fill" id="progress-fill" cx="74" cy="74" r="62" />
+        </svg>
+        <span class="progress-ring-text" id="progress-pct">0%</span>
+      </div>
+      <span class="progress-ring-label">Overall Progress</span>
+    </div>
+  </header>
+
+  <!-- Day Navigation -->
+  <div class="day-nav">
+    <button class="day-nav-btn" id="prev-day" aria-label="Previous day">&#8592;</button>
+    <span class="day-nav-date" id="nav-date"></span>
+    <button class="day-nav-btn" id="next-day" aria-label="Next day">&#8594;</button>
+    <button class="day-nav-today" id="go-today">Today</button>
+  </div>
+
+  <!-- Contextual Banners -->
+  <div class="context-banners">
+    <div class="context-banner blue" id="hydration-cue" style="display:none;">
+      <span>&#128167;</span>
+      <span>Afternoon reminder: ease off water after 6 PM to protect sleep quality.</span>
+    </div>
+    <div class="context-banner blue" id="work-reminder">
+      <span>&#128694;</span>
+      <span>Stand or walk 2 to 5 minutes every hour.</span>
+    </div>
+  </div>
+
+  <!-- Daily Five -->
+  <div class="card" id="daily-five-card" data-accent="green">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">&#9745;</span> Daily Five</span>
+      <span class="card-badge" id="daily-five-badge">0 / 5</span>
+    </div>
+    <div class="checklist" id="daily-five-list"></div>
+  </div>
+
+  <!-- Quick Trackers -->
+  <div class="card" data-accent="blue">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">&#9889;</span> Quick Trackers</span>
+    </div>
+    <div class="tracker-row">
+      <div class="tracker-item">
+        <span class="tracker-label">Morning energy</span>
+        <div class="slider-container">
+          <span class="slider-emoji" id="energy-emoji">&#128564;</span>
+          <input type="range" id="energy-slider" min="0" max="10" value="0" step="1">
+          <span class="slider-value" id="energy-value">0</span>
+        </div>
+      </div>
+      <div class="tracker-item">
+        <span class="tracker-label">Woke at 2 to 3 AM?</span>
+        <div class="toggle-group">
+          <button class="toggle-btn" data-woke="false" id="woke-no">No</button>
+          <button class="toggle-btn" data-woke="true" id="woke-yes">Yes</button>
+        </div>
+      </div>
+      <div class="tracker-item">
+        <span class="tracker-label">Training today?</span>
+        <div class="toggle-group" id="training-group">
+          <button class="toggle-btn" data-training="better">Better</button>
+          <button class="toggle-btn" data-training="same">Same</button>
+          <button class="toggle-btn" data-training="worse">Worse</button>
+          <button class="toggle-btn" data-training="rest">Rest</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blood Pressure -->
+  <div class="card" data-accent="red">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">&#10084;</span> Blood Pressure</span>
+    </div>
+    <div class="bp-inputs">
+      <div class="bp-input-group">
+        <label>Systolic</label>
+        <input type="number" id="bp-sys" placeholder="120" inputmode="numeric">
+      </div>
+      <div class="bp-input-group">
+        <label>Diastolic</label>
+        <input type="number" id="bp-dia" placeholder="80" inputmode="numeric">
+      </div>
+      <div class="bp-input-group">
+        <label>Pulse</label>
+        <input type="number" id="bp-pulse" placeholder="72" inputmode="numeric">
+      </div>
+    </div>
+    <button class="bp-save-btn" id="bp-save">Save Reading</button>
+    <div class="bp-chart-container" id="bp-chart-wrap">
+      <canvas id="bp-chart" width="680" height="200"></canvas>
+    </div>
+    <div class="bp-trend no-data" id="bp-trend">
+      <span>No readings yet. Log your first reading above.</span>
+    </div>
+    <div class="bp-reading-list" id="bp-reading-list"></div>
+  </div>
+
+  <!-- Nutrition -->
+  <div class="card" id="nutrition-card" data-accent="orange">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">&#127813;</span> Nutrition</span>
+      <span class="card-badge" id="nutrition-badge">0 / 7</span>
+    </div>
+    <div class="checklist" id="nutrition-list"></div>
+    <div class="fish-counter">
+      <span class="fish-icon">&#128031;</span>
+      <span class="fish-count" id="fish-count">0</span>
+      <span class="fish-label">/ 2 fish servings this week</span>
+    </div>
+  </div>
+
+  <!-- Supplements -->
+  <div class="card" data-accent="purple">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">&#128138;</span> Supplements</span>
+    </div>
+    <div id="supplements-list"></div>
+  </div>
+
+  <!-- Training Notes -->
+  <div class="card" data-accent="yellow">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">&#127947;</span> Training Notes</span>
+    </div>
+    <textarea class="training-textarea" id="training-notes" placeholder="How did training go today? Session details, weights, sets, how it felt..."></textarea>
+    <div class="training-reminder">
+      <span>&#128172;</span>
+      <span>Stay 2 to 3 reps from failure. Prioritize form and consistency.</span>
+    </div>
+    <div class="joint-ache-toggle" id="joint-ache" role="button" tabindex="0">
+      <div class="mini-toggle"></div>
+      <span style="font-size: 14px; color: var(--text-secondary);">Joint ache or discomfort today</span>
+      <span class="joint-ache-count" id="joint-ache-count"></span>
+    </div>
+  </div>
+
+  <!-- Weekly Overview -->
+  <div class="card" data-accent="teal">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">&#128197;</span> This Week</span>
+    </div>
+    <div class="week-grid" id="week-grid"></div>
+  </div>
+
+  <!-- 4-Week Progress -->
+  <div class="card" data-accent="teal">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">&#128200;</span> 4-Week Progress</span>
+    </div>
+    <div class="streak-display">
+      <span class="streak-number" id="streak-number">0</span>
+      <span class="streak-label">
+        day streak
+        <span>consecutive days with all Daily Five</span>
+      </span>
+    </div>
+    <div class="week-grid" style="margin-bottom: 4px;">
+      <span class="week-day-header">M</span>
+      <span class="week-day-header">T</span>
+      <span class="week-day-header">W</span>
+      <span class="week-day-header">T</span>
+      <span class="week-day-header">F</span>
+      <span class="week-day-header">S</span>
+      <span class="week-day-header">S</span>
+    </div>
+    <div class="heatmap" id="heatmap"></div>
+    <div class="signs-checklist" id="signs-section">
+      <div class="signs-title">Signs to watch (weeks 2 to 4)</div>
+      <div id="signs-list"></div>
+    </div>
+  </div>
+
+  <!-- Labs Tracker -->
+  <div class="card" data-accent="blue">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">&#129514;</span> Labs</span>
+    </div>
+    <div id="labs-list"></div>
+  </div>
+
+  <!-- Sample Meal Reference -->
+  <div class="card" data-accent="orange">
+    <div class="collapsible-header" id="meal-toggle">
+      <span class="card-title"><span class="icon">&#127858;</span> Sample Day of Eating</span>
+      <span class="collapsible-arrow" id="meal-arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body" id="meal-body">
+      <div class="meal-section">
+        <div class="meal-time">Breakfast (6:30 AM)</div>
+        <div class="meal-desc">3 eggs scrambled with spinach and tomatoes, cooked in olive oil. 1 slice whole grain toast. Coffee (black or with a splash of milk).</div>
+      </div>
+      <div class="meal-section">
+        <div class="meal-time">Lunch (12:00 PM)</div>
+        <div class="meal-desc">Grilled chicken breast (6 oz) over mixed greens. Roasted sweet potato. Olive oil and lemon dressing. Water.</div>
+      </div>
+      <div class="meal-section">
+        <div class="meal-time">Afternoon Snack (3:00 PM)</div>
+        <div class="meal-desc">Greek yogurt (plain) with a handful of walnuts and a drizzle of honey. Green tea or water.</div>
+      </div>
+      <div class="meal-section">
+        <div class="meal-time">Dinner (6:30 PM)</div>
+        <div class="meal-desc">Baked salmon (6 oz) with roasted broccoli and quinoa. Olive oil for cooking. Water with the meal, then ease off fluids.</div>
+      </div>
+      <div class="meal-section">
+        <div class="meal-time">Before Bed (9:30 PM)</div>
+        <div class="meal-desc">Magnesium supplement. Small handful of almonds if hungry. 5 minutes of slow breathing.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Bar -->
+  <div class="action-bar">
+    <button class="action-btn" id="btn-export">&#128190; Export Data</button>
+    <button class="action-btn" id="btn-import">&#128194; Import Data</button>
+    <button class="action-btn" id="btn-print">&#128424; Print Summary</button>
+    <button class="action-btn" id="btn-settings">&#9881; Start Date</button>
+  </div>
+
+  <input type="file" class="file-input-hidden" id="import-file" accept=".json">
+
+  <!-- Motto Footer -->
+  <div class="motto">
+    <div class="motto-text">
+      <strong>Simplicity is the plan. Consistency is the medicine.</strong>
+    </div>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settings-modal">
+  <div class="modal">
+    <h3>Plan Start Date</h3>
+    <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">Set the date your 4-week plan begins. Week and day numbers will calculate from this date.</p>
+    <input type="date" id="start-date-input">
+    <div class="modal-actions">
+      <button class="modal-btn" id="modal-cancel">Cancel</button>
+      <button class="modal-btn primary" id="modal-save">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ====== Constants ======
+  const DAILY_FIVE_LABELS = [
+    'Wake at 6 AM',
+    'Coffee before noon only',
+    '3 meals with protein + plants',
+    'Walk every day',
+    '5 min slow breathing before bed'
+  ];
+
+  const NUTRITION_LABELS = [
+    '3 meals with 35 to 45g protein each',
+    'Vegetables at every meal',
+    'Fish serving today (goal: 2x/week)',
+    'Fiber source (oats, beans, or flaxseed)',
+    'Cooked with olive oil',
+    'Water throughout day, ease off after 6 PM',
+    'Less packaged or processed food'
+  ];
+
+  const SUPPLEMENT_ITEMS = [
+    { name: 'Creatine', dose: '5g daily' },
+    { name: 'Magnesium', dose: '300 to 400mg at bedtime' }
+  ];
+
+  const SIGNS_LABELS = [
+    'Sleeping better',
+    'More morning energy',
+    'More stable mood',
+    'Training feels good',
+    'BP trending down'
+  ];
+
+  const LAB_ITEMS = [
+    { name: 'Complete Metabolic Panel (CMP)', desc: 'Kidney function, electrolytes, glucose, liver enzymes' },
+    { name: 'Lipid Panel', desc: 'Total cholesterol, HDL, LDL, triglycerides' },
+    { name: 'HbA1c', desc: 'Average blood sugar over 2 to 3 months' },
+    { name: 'Fasting Insulin', desc: 'Insulin resistance marker' },
+    { name: 'Testosterone (Total + Free)', desc: 'Hormonal health baseline' },
+    { name: 'Thyroid Panel (TSH, Free T3, Free T4)', desc: 'Thyroid function and metabolism' },
+    { name: 'Vitamin D (25-OH)', desc: 'Deficiency is common; affects mood, energy, immunity' },
+    { name: 'CBC with Differential', desc: 'Red/white blood cells, hemoglobin, immune markers' },
+    { name: 'hs-CRP', desc: 'High-sensitivity inflammation marker' },
+    { name: 'Magnesium (RBC)', desc: 'Intracellular magnesium; serum mag is often misleading' }
+  ];
+
+  const ENERGY_EMOJIS = ['&#128564;','&#128553;','&#128532;','&#128533;','&#128528;','&#128578;','&#128522;','&#128513;','&#129321;','&#129395;','&#128293;'];
+
+  const STORAGE_KEY = 'healthReset';
+  const START_DATE_KEY = 'healthResetStartDate';
+  const BP_KEY = 'healthResetBP';
+  const LABS_KEY = 'healthResetLabs';
+  const SIGNS_KEY = 'healthResetSigns';
+
+  // ====== State ======
+  let currentDate = new Date();
+  let startDate = null;
+  let allData = {};
+  let bpReadings = [];
+  let labsData = {};
+  let signsData = [];
+
+  // ====== Utility ======
+  function dateStr(d) {
+    const dd = d instanceof Date ? d : new Date(d);
+    return dd.getFullYear() + '-' + String(dd.getMonth()+1).padStart(2,'0') + '-' + String(dd.getDate()).padStart(2,'0');
+  }
+
+  function parseDate(s) {
+    const parts = s.split('-');
+    return new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+  }
+
+  function formatDate(d) {
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    return days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  }
+
+  function formatShort(d) {
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return months[d.getMonth()] + ' ' + d.getDate();
+  }
+
+  function daysBetween(a, b) {
+    const msDay = 86400000;
+    const ua = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    const ub = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+    return Math.floor((ub - ua) / msDay);
+  }
+
+  function addDays(d, n) {
+    const r = new Date(d);
+    r.setDate(r.getDate() + n);
+    return r;
+  }
+
+  function getWeekStart(d) {
+    const dd = new Date(d);
+    const day = dd.getDay();
+    const diff = day === 0 ? 6 : day - 1;
+    dd.setDate(dd.getDate() - diff);
+    return dd;
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.innerHTML = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  // ====== Persistence ======
+  function loadAll() {
+    try {
+      allData = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      bpReadings = JSON.parse(localStorage.getItem(BP_KEY) || '[]');
+      labsData = JSON.parse(localStorage.getItem(LABS_KEY) || '{}');
+      signsData = JSON.parse(localStorage.getItem(SIGNS_KEY) || '[]');
+      const sd = localStorage.getItem(START_DATE_KEY);
+      startDate = sd ? parseDate(sd) : new Date();
+    } catch(e) {
+      allData = {};
+      bpReadings = [];
+      labsData = {};
+      signsData = [];
+      startDate = new Date();
+    }
+  }
+
+  function saveAll() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(allData));
+  }
+
+  function saveBP() {
+    localStorage.setItem(BP_KEY, JSON.stringify(bpReadings));
+  }
+
+  function saveLabs() {
+    localStorage.setItem(LABS_KEY, JSON.stringify(labsData));
+  }
+
+  function saveSigns() {
+    localStorage.setItem(SIGNS_KEY, JSON.stringify(signsData));
+  }
+
+  function saveStartDate() {
+    localStorage.setItem(START_DATE_KEY, dateStr(startDate));
+  }
+
+  function getDayData(ds) {
+    if (!allData[ds]) {
+      allData[ds] = {
+        dailyFive: [false, false, false, false, false],
+        energy: 0,
+        wokeNight: false,
+        training: null,
+        nutrition: [false, false, false, false, false, false, false],
+        supplements: [false, false],
+        trainingNotes: '',
+        jointAche: false
+      };
+    }
+    return allData[ds];
+  }
+
+  // ====== Completion ======
+  function dayCompletionPct(ds) {
+    const d = allData[ds];
+    if (!d) return 0;
+    let total = 0;
+    let done = 0;
+    total += 5;
+    done += (d.dailyFive || []).filter(Boolean).length;
+    total += 7;
+    done += (d.nutrition || []).filter(Boolean).length;
+    total += 2;
+    done += (d.supplements || []).filter(Boolean).length;
+    return Math.round((done / total) * 100);
+  }
+
+  function overallProgressPct() {
+    const today = new Date();
+    const totalDays = 28;
+    let daysElapsed = daysBetween(startDate, today) + 1;
+    daysElapsed = Math.max(0, Math.min(daysElapsed, totalDays));
+    return Math.round((daysElapsed / totalDays) * 100);
+  }
+
+  function calculateStreak() {
+    let streak = 0;
+    const today = new Date();
+    let d = new Date(today);
+    while (true) {
+      const ds = dateStr(d);
+      const data = allData[ds];
+      if (!data || !data.dailyFive || !data.dailyFive.every(Boolean)) break;
+      streak++;
+      d = addDays(d, -1);
+      if (daysBetween(startDate, d) < 0) break;
+    }
+    return streak;
+  }
+
+  function calculateItemStreak(itemType, index) {
+    let streak = 0;
+    let d = new Date(currentDate);
+    while (true) {
+      const ds = dateStr(d);
+      const data = allData[ds];
+      if (!data) break;
+      const arr = data[itemType];
+      if (!arr || !arr[index]) break;
+      streak++;
+      d = addDays(d, -1);
+      if (daysBetween(startDate, d) < 0) break;
+    }
+    return streak;
+  }
+
+  function fishCountThisWeek() {
+    const ws = getWeekStart(currentDate);
+    let count = 0;
+    for (let i = 0; i < 7; i++) {
+      const ds = dateStr(addDays(ws, i));
+      const data = allData[ds];
+      if (data && data.nutrition && data.nutrition[2]) count++;
+    }
+    return count;
+  }
+
+  function jointAcheCountTotal() {
+    let count = 0;
+    for (const ds in allData) {
+      if (allData[ds].jointAche) count++;
+    }
+    return count;
+  }
+
+  // ====== Animated number ======
+  function animateNumber(el, targetVal) {
+    const current = parseInt(el.textContent) || 0;
+    if (current === targetVal) return;
+    el.classList.add('animating');
+    el.textContent = targetVal;
+    setTimeout(() => el.classList.remove('animating'), 600);
+  }
+
+  // ====== Header ======
+  function renderHeader() {
+    const today = new Date();
+    document.getElementById('header-date').textContent = formatDate(today);
+
+    const elapsed = daysBetween(startDate, today);
+    const weekNum = Math.min(4, Math.max(1, Math.floor(elapsed / 7) + 1));
+    const dayNum = Math.min(28, Math.max(1, elapsed + 1));
+
+    document.getElementById('header-week').textContent = 'Week ' + weekNum;
+    document.getElementById('header-day').textContent = 'Day ' + dayNum;
+
+    const pct = overallProgressPct();
+    document.getElementById('progress-pct').textContent = pct + '%';
+    const circle = document.getElementById('progress-fill');
+    const circumference = 2 * Math.PI * 62;
+    const offset = circumference - (pct / 100) * circumference;
+    setTimeout(() => { circle.style.strokeDashoffset = offset; }, 100);
+  }
+
+  // ====== Day Navigation ======
+  function renderDayNav() {
+    const ds = dateStr(currentDate);
+    const today = new Date();
+    const isToday = dateStr(today) === ds;
+
+    document.getElementById('nav-date').textContent = isToday ? 'Today, ' + formatShort(currentDate) : formatDate(currentDate);
+    document.getElementById('go-today').style.display = isToday ? 'none' : 'inline-block';
+
+    const prevDate = addDays(currentDate, -1);
+    document.getElementById('prev-day').disabled = daysBetween(startDate, prevDate) < 0;
+
+    const nextDate = addDays(currentDate, 1);
+    const maxDate = addDays(startDate, 27);
+    document.getElementById('next-day').disabled = daysBetween(nextDate, today) < 0 || daysBetween(nextDate, maxDate) < 0;
+  }
+
+  // ====== Daily Five ======
+  function renderDailyFive() {
+    const ds = dateStr(currentDate);
+    const data = getDayData(ds);
+    const list = document.getElementById('daily-five-list');
+    list.innerHTML = '';
+
+    let checked = 0;
+    DAILY_FIVE_LABELS.forEach((label, i) => {
+      const isChecked = data.dailyFive[i];
+      if (isChecked) checked++;
+      const streak = calculateItemStreak('dailyFive', i);
+
+      const item = document.createElement('div');
+      item.className = 'check-item' + (isChecked ? ' checked' : '');
+      item.innerHTML = '<div class="pill-toggle"></div>' +
+        '<span class="check-label">' + label + '</span>' +
+        (streak > 0 ? '<span class="streak-badge">' + streak + 'd</span>' : '');
+
+      item.addEventListener('click', () => {
+        data.dailyFive[i] = !data.dailyFive[i];
+        saveAll();
+        renderDailyFive();
+        renderWeekGrid();
+        renderHeatmap();
+        renderHeader();
+      });
+
+      list.appendChild(item);
+    });
+
+    const badge = document.getElementById('daily-five-badge');
+    badge.textContent = checked + ' / 5';
+    badge.className = 'card-badge' + (checked === 5 ? '' : ' amber');
+
+    // Celebration state
+    const card = document.getElementById('daily-five-card');
+    if (checked === 5) {
+      card.classList.add('celebration');
+    } else {
+      card.classList.remove('celebration');
+    }
+  }
+
+  // ====== Quick Trackers ======
+  function renderQuickTrackers() {
+    const ds = dateStr(currentDate);
+    const data = getDayData(ds);
+
+    const slider = document.getElementById('energy-slider');
+    slider.value = data.energy || 0;
+    updateEnergyDisplay(data.energy || 0, false);
+
+    document.getElementById('woke-no').className = 'toggle-btn' + (!data.wokeNight ? ' active' : '');
+    document.getElementById('woke-yes').className = 'toggle-btn' + (data.wokeNight ? ' active-amber' : '');
+
+    const btns = document.querySelectorAll('#training-group .toggle-btn');
+    btns.forEach(btn => {
+      const val = btn.dataset.training;
+      let cls = 'toggle-btn';
+      if (data.training === val) {
+        if (val === 'better') cls += ' active';
+        else if (val === 'same') cls += ' active-blue';
+        else if (val === 'worse') cls += ' active-amber';
+        else if (val === 'rest') cls += ' active-red';
+      }
+      btn.className = cls;
+    });
+  }
+
+  function updateEnergyDisplay(val, animate) {
+    document.getElementById('energy-value').textContent = val;
+    const emojiEl = document.getElementById('energy-emoji');
+    emojiEl.innerHTML = ENERGY_EMOJIS[val] || ENERGY_EMOJIS[0];
+    if (animate !== false) {
+      emojiEl.classList.remove('bounce');
+      void emojiEl.offsetWidth;
+      emojiEl.classList.add('bounce');
+    }
+  }
+
+  // ====== Blood Pressure ======
+  function renderBPChart() {
+    const canvas = document.getElementById('bp-chart');
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    const chartWrap = document.getElementById('bp-chart-wrap');
+
+    const readings = bpReadings.slice(-14);
+    if (readings.length === 0) {
+      chartWrap.classList.add('collapsed');
+      return;
+    }
+    chartWrap.classList.remove('collapsed');
+
+    const padding = { top: 20, right: 20, bottom: 30, left: 40 };
+    const chartW = w - padding.left - padding.right;
+    const chartH = h - padding.top - padding.bottom;
+
+    const minBP = 50;
+    const maxBP = 180;
+    const range = maxBP - minBP;
+
+    function yPos(val) {
+      return padding.top + chartH - ((val - minBP) / range) * chartH;
+    }
+
+    // Zone backgrounds
+    ctx.fillStyle = 'rgba(134, 239, 172, 0.04)';
+    ctx.fillRect(padding.left, yPos(120), chartW, yPos(minBP) - yPos(120));
+
+    ctx.fillStyle = 'rgba(251, 191, 36, 0.04)';
+    ctx.fillRect(padding.left, yPos(130), chartW, yPos(120) - yPos(130));
+
+    ctx.fillStyle = 'rgba(248, 113, 113, 0.04)';
+    ctx.fillRect(padding.left, yPos(maxBP), chartW, yPos(130) - yPos(maxBP));
+
+    // Grid lines
+    ctx.strokeStyle = 'rgba(148, 163, 184, 0.08)';
+    ctx.lineWidth = 1;
+    [80, 100, 120, 140, 160].forEach(val => {
+      ctx.beginPath();
+      ctx.moveTo(padding.left, yPos(val));
+      ctx.lineTo(w - padding.right, yPos(val));
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(148, 163, 184, 0.35)';
+      ctx.font = '10px Inter, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(val.toString(), padding.left - 6, yPos(val) + 4);
+    });
+
+    if (readings.length < 2) {
+      const r = readings[0];
+      const x = padding.left + chartW / 2;
+
+      ctx.fillStyle = 'rgba(248, 113, 113, 0.8)';
+      ctx.beginPath();
+      ctx.arc(x, yPos(r.systolic), 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(147, 197, 253, 0.8)';
+      ctx.beginPath();
+      ctx.arc(x, yPos(r.diastolic), 5, 0, Math.PI * 2);
+      ctx.fill();
+      return;
+    }
+
+    const step = chartW / (readings.length - 1);
+
+    // Systolic line
+    ctx.strokeStyle = 'rgba(248, 113, 113, 0.7)';
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    readings.forEach((r, i) => {
+      const x = padding.left + i * step;
+      const y = yPos(r.systolic);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // Diastolic line
+    ctx.strokeStyle = 'rgba(147, 197, 253, 0.7)';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    readings.forEach((r, i) => {
+      const x = padding.left + i * step;
+      const y = yPos(r.diastolic);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // Pulse line
+    ctx.strokeStyle = 'rgba(134, 239, 172, 0.35)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    readings.forEach((r, i) => {
+      if (!r.pulse) return;
+      const x = padding.left + i * step;
+      const y = yPos(r.pulse);
+      if (i === 0 || !readings[i-1].pulse) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Data points
+    readings.forEach((r, i) => {
+      const x = padding.left + i * step;
+
+      ctx.fillStyle = 'rgba(248, 113, 113, 0.9)';
+      ctx.beginPath();
+      ctx.arc(x, yPos(r.systolic), 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(147, 197, 253, 0.9)';
+      ctx.beginPath();
+      ctx.arc(x, yPos(r.diastolic), 4, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // Date labels
+    ctx.fillStyle = 'rgba(148, 163, 184, 0.4)';
+    ctx.font = '9px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    const labelStep = Math.max(1, Math.floor(readings.length / 5));
+    readings.forEach((r, i) => {
+      if (i % labelStep === 0 || i === readings.length - 1) {
+        const x = padding.left + i * step;
+        const d = new Date(r.date);
+        ctx.fillText(formatShort(d), x, h - 8);
+      }
+    });
+  }
+
+  function renderBPTrend() {
+    const trend = document.getElementById('bp-trend');
+    if (bpReadings.length < 3) {
+      trend.className = 'bp-trend no-data';
+      trend.innerHTML = '<span>Need at least 3 readings to show trend.</span>';
+      return;
+    }
+
+    const recent = bpReadings.slice(-5);
+    const older = bpReadings.slice(-10, -5);
+    if (older.length === 0) {
+      trend.className = 'bp-trend stable';
+      trend.innerHTML = '<span>&#8596;</span><span>Collecting data. Keep logging readings.</span>';
+      return;
+    }
+
+    const avgRecent = recent.reduce((s, r) => s + r.systolic, 0) / recent.length;
+    const avgOlder = older.reduce((s, r) => s + r.systolic, 0) / older.length;
+    const diff = avgRecent - avgOlder;
+
+    if (diff < -3) {
+      trend.className = 'bp-trend improving';
+      trend.innerHTML = '<span>&#8600;</span><span>Trending down. Average systolic improving by ' + Math.abs(Math.round(diff)) + ' mmHg.</span>';
+    } else if (diff > 3) {
+      trend.className = 'bp-trend worsening';
+      trend.innerHTML = '<span>&#8599;</span><span>Trending up. Average systolic rising by ' + Math.round(diff) + ' mmHg.</span>';
+    } else {
+      trend.className = 'bp-trend stable';
+      trend.innerHTML = '<span>&#8596;</span><span>Stable. Average systolic holding steady.</span>';
+    }
+  }
+
+  function renderBPReadings() {
+    const list = document.getElementById('bp-reading-list');
+    list.innerHTML = '';
+    const recent = bpReadings.slice().reverse().slice(0, 20);
+    recent.forEach((r, idx) => {
+      const realIdx = bpReadings.length - 1 - idx;
+      const item = document.createElement('div');
+      item.className = 'bp-reading-item';
+      const d = new Date(r.date);
+      item.innerHTML = '<span class="bp-reading-values">' + r.systolic + '/' + r.diastolic + (r.pulse ? ' <span style="color:var(--text-muted);font-weight:400;font-size:12px;">pulse ' + r.pulse + '</span>' : '') + '</span>' +
+        '<span class="bp-reading-date">' + formatShort(d) + ' ' + (r.time || '') + '</span>' +
+        '<button class="bp-reading-delete" data-idx="' + realIdx + '" title="Delete">&times;</button>';
+      list.appendChild(item);
+    });
+
+    list.querySelectorAll('.bp-reading-delete').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const idx = parseInt(btn.dataset.idx);
+        bpReadings.splice(idx, 1);
+        saveBP();
+        renderBPChart();
+        renderBPTrend();
+        renderBPReadings();
+        showToast('Reading removed');
+      });
+    });
+  }
+
+  // ====== Nutrition ======
+  function renderNutrition() {
+    const ds = dateStr(currentDate);
+    const data = getDayData(ds);
+    const list = document.getElementById('nutrition-list');
+    list.innerHTML = '';
+
+    let checked = 0;
+    NUTRITION_LABELS.forEach((label, i) => {
+      const isChecked = data.nutrition[i];
+      if (isChecked) checked++;
+
+      const item = document.createElement('div');
+      item.className = 'check-item' + (isChecked ? ' checked' : '');
+      item.innerHTML = '<div class="pill-toggle"></div>' +
+        '<span class="check-label">' + label + '</span>';
+
+      item.addEventListener('click', () => {
+        data.nutrition[i] = !data.nutrition[i];
+        saveAll();
+        renderNutrition();
+        renderWeekGrid();
+        renderHeatmap();
+      });
+
+      list.appendChild(item);
+    });
+
+    const badge = document.getElementById('nutrition-badge');
+    badge.textContent = checked + ' / 7';
+    badge.className = 'card-badge' + (checked === 7 ? '' : ' amber');
+
+    document.getElementById('fish-count').textContent = fishCountThisWeek();
+  }
+
+  // ====== Supplements ======
+  function renderSupplements() {
+    const ds = dateStr(currentDate);
+    const data = getDayData(ds);
+    const list = document.getElementById('supplements-list');
+    list.innerHTML = '';
+
+    SUPPLEMENT_ITEMS.forEach((supp, i) => {
+      const isChecked = data.supplements[i];
+      const item = document.createElement('div');
+      item.className = 'supplement-item' + (isChecked ? ' checked' : '');
+      item.innerHTML = '<div class="pill-toggle"></div>' +
+        '<div><div class="supplement-name">' + supp.name + '</div><div class="supplement-dose">' + supp.dose + '</div></div>';
+
+      item.addEventListener('click', () => {
+        data.supplements[i] = !data.supplements[i];
+        saveAll();
+        renderSupplements();
+        renderWeekGrid();
+        renderHeatmap();
+      });
+
+      list.appendChild(item);
+    });
+  }
+
+  // ====== Training ======
+  function renderTraining() {
+    const ds = dateStr(currentDate);
+    const data = getDayData(ds);
+    document.getElementById('training-notes').value = data.trainingNotes || '';
+
+    const ache = document.getElementById('joint-ache');
+    ache.className = 'joint-ache-toggle' + (data.jointAche ? ' active' : '');
+
+    const totalAche = jointAcheCountTotal();
+    document.getElementById('joint-ache-count').textContent = totalAche > 0 ? totalAche + ' total' : '';
+  }
+
+  // ====== Week Grid ======
+  function renderWeekGrid() {
+    const grid = document.getElementById('week-grid');
+    grid.innerHTML = '';
+
+    const dayNames = ['M','T','W','T','F','S','S'];
+    dayNames.forEach(d => {
+      const header = document.createElement('span');
+      header.className = 'week-day-header';
+      header.textContent = d;
+      grid.appendChild(header);
+    });
+
+    const ws = getWeekStart(currentDate);
+    const today = new Date();
+
+    for (let i = 0; i < 7; i++) {
+      const d = addDays(ws, i);
+      const ds = dateStr(d);
+      const isFuture = daysBetween(today, d) > 0;
+      const isToday = dateStr(today) === ds;
+      const pct = dayCompletionPct(ds);
+
+      let cls = 'week-day-cell';
+      if (isFuture) cls += ' future';
+      else if (pct === 0) cls += ' empty';
+      else if (pct < 40) cls += ' low';
+      else if (pct < 75) cls += ' medium';
+      else if (pct < 100) cls += ' high';
+      else cls += ' complete';
+      if (isToday) cls += ' today';
+
+      const cell = document.createElement('div');
+      cell.className = cls;
+      cell.innerHTML = '<span class="week-day-num">' + d.getDate() + '</span>';
+
+      if (!isFuture) {
+        cell.addEventListener('click', () => {
+          currentDate = new Date(d);
+          renderAll();
+        });
+      }
+
+      grid.appendChild(cell);
+    }
+  }
+
+  // ====== Heatmap ======
+  function renderHeatmap() {
+    const heatmap = document.getElementById('heatmap');
+    heatmap.innerHTML = '';
+
+    const today = new Date();
+
+    const sd = new Date(startDate);
+    const sdDay = sd.getDay();
+    const sdMondayOffset = sdDay === 0 ? 6 : sdDay - 1;
+    const gridStart = addDays(sd, -sdMondayOffset);
+
+    for (let i = 0; i < 28; i++) {
+      const d = addDays(gridStart, i);
+      const ds = dateStr(d);
+      const planDay = daysBetween(startDate, d);
+      const isFuture = daysBetween(today, d) > 0;
+      const isInPlan = planDay >= 0 && planDay < 28;
+      const isToday = dateStr(today) === ds;
+      const pct = isInPlan ? dayCompletionPct(ds) : 0;
+
+      let bg, color;
+      if (!isInPlan) {
+        bg = 'rgba(100, 116, 139, 0.03)';
+        color = 'rgba(100, 116, 139, 0.2)';
+      } else if (isFuture) {
+        bg = 'rgba(100, 116, 139, 0.05)';
+        color = 'rgba(100, 116, 139, 0.3)';
+      } else if (pct === 0) {
+        bg = 'rgba(100, 116, 139, 0.07)';
+        color = 'var(--text-muted)';
+      } else if (pct < 40) {
+        bg = 'rgba(251, 191, 36, 0.12)';
+        color = 'var(--amber)';
+      } else if (pct < 75) {
+        bg = 'rgba(251, 191, 36, 0.22)';
+        color = 'var(--amber)';
+      } else if (pct < 100) {
+        bg = 'rgba(134, 239, 172, 0.18)';
+        color = 'var(--green)';
+      } else {
+        bg = 'rgba(134, 239, 172, 0.35)';
+        color = 'var(--green)';
+      }
+
+      const cell = document.createElement('div');
+      cell.className = 'heatmap-cell';
+      cell.style.background = bg;
+      cell.style.color = color;
+      if (isToday) {
+        cell.style.border = '1.5px solid var(--green)';
+        cell.style.boxShadow = '0 0 0 2px rgba(134, 239, 172, 0.12)';
+      }
+      cell.textContent = d.getDate();
+
+      if (isInPlan && !isFuture) {
+        cell.addEventListener('click', () => {
+          currentDate = new Date(d);
+          renderAll();
+        });
+      }
+
+      heatmap.appendChild(cell);
+    }
+
+    // Streak with animation
+    const streak = calculateStreak();
+    animateNumber(document.getElementById('streak-number'), streak);
+  }
+
+  // ====== Signs ======
+  function renderSigns() {
+    const list = document.getElementById('signs-list');
+    list.innerHTML = '';
+
+    SIGNS_LABELS.forEach((label, i) => {
+      const isChecked = signsData[i] || false;
+      const item = document.createElement('div');
+      item.className = 'sign-item' + (isChecked ? ' checked' : '');
+      item.innerHTML = '<span class="sign-dot"></span><span class="sign-label">' + label + '</span>';
+
+      item.addEventListener('click', () => {
+        signsData[i] = !signsData[i];
+        saveSigns();
+        renderSigns();
+      });
+
+      list.appendChild(item);
+    });
+  }
+
+  // ====== Labs ======
+  function renderLabs() {
+    const list = document.getElementById('labs-list');
+    list.innerHTML = '';
+
+    const statuses = ['Not ordered', 'Ordered', 'Results in'];
+    const statusAttrs = ['', 'ordered', 'results-in'];
+
+    LAB_ITEMS.forEach((lab, i) => {
+      const status = labsData[i] || { status: 0, results: '' };
+      const item = document.createElement('div');
+      item.className = 'lab-item';
+      item.setAttribute('data-status', statusAttrs[status.status] || '');
+
+      let btnCls = 'lab-status-btn';
+      if (status.status === 1) btnCls += ' ordered';
+      else if (status.status === 2) btnCls += ' results-in';
+
+      item.innerHTML = '<div class="lab-info"><div class="lab-name">' + lab.name + '</div><div class="lab-desc">' + lab.desc + '</div>' +
+        '<input class="lab-results-input' + (status.status === 2 ? ' visible' : '') + '" type="text" placeholder="Enter results..." value="' + (status.results || '').replace(/"/g, '&quot;') + '" data-lab="' + i + '">' +
+        '</div>' +
+        '<button class="' + btnCls + '" data-lab="' + i + '">' + statuses[status.status] + '</button>';
+
+      list.appendChild(item);
+    });
+
+    list.querySelectorAll('.lab-status-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.lab);
+        if (!labsData[idx]) labsData[idx] = { status: 0, results: '' };
+        labsData[idx].status = (labsData[idx].status + 1) % 3;
+        saveLabs();
+        renderLabs();
+      });
+    });
+
+    list.querySelectorAll('.lab-results-input').forEach(input => {
+      input.addEventListener('change', () => {
+        const idx = parseInt(input.dataset.lab);
+        if (!labsData[idx]) labsData[idx] = { status: 2, results: '' };
+        labsData[idx].results = input.value;
+        saveLabs();
+      });
+    });
+  }
+
+  // ====== Hydration Cue ======
+  function checkHydrationCue() {
+    const hour = new Date().getHours();
+    const cue = document.getElementById('hydration-cue');
+    cue.style.display = (hour >= 14 && hour < 22) ? 'flex' : 'none';
+  }
+
+  // ====== Render All ======
+  function renderAll() {
+    renderHeader();
+    renderDayNav();
+    renderDailyFive();
+    renderQuickTrackers();
+    renderBPChart();
+    renderBPTrend();
+    renderBPReadings();
+    renderNutrition();
+    renderSupplements();
+    renderTraining();
+    renderWeekGrid();
+    renderHeatmap();
+    renderSigns();
+    renderLabs();
+    checkHydrationCue();
+  }
+
+  // ====== Event Listeners ======
+  function initEvents() {
+    // Day navigation
+    document.getElementById('prev-day').addEventListener('click', () => {
+      currentDate = addDays(currentDate, -1);
+      renderAll();
+    });
+
+    document.getElementById('next-day').addEventListener('click', () => {
+      currentDate = addDays(currentDate, 1);
+      renderAll();
+    });
+
+    document.getElementById('go-today').addEventListener('click', () => {
+      currentDate = new Date();
+      renderAll();
+    });
+
+    // Energy slider
+    const slider = document.getElementById('energy-slider');
+    slider.addEventListener('input', () => {
+      const val = parseInt(slider.value);
+      updateEnergyDisplay(val, true);
+      const ds = dateStr(currentDate);
+      const data = getDayData(ds);
+      data.energy = val;
+      saveAll();
+    });
+
+    // Woke at night
+    document.getElementById('woke-no').addEventListener('click', () => {
+      const ds = dateStr(currentDate);
+      const data = getDayData(ds);
+      data.wokeNight = false;
+      saveAll();
+      renderQuickTrackers();
+    });
+
+    document.getElementById('woke-yes').addEventListener('click', () => {
+      const ds = dateStr(currentDate);
+      const data = getDayData(ds);
+      data.wokeNight = true;
+      saveAll();
+      renderQuickTrackers();
+    });
+
+    // Training buttons
+    document.querySelectorAll('#training-group .toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ds = dateStr(currentDate);
+        const data = getDayData(ds);
+        const val = btn.dataset.training;
+        data.training = data.training === val ? null : val;
+        saveAll();
+        renderQuickTrackers();
+      });
+    });
+
+    // BP save
+    document.getElementById('bp-save').addEventListener('click', () => {
+      const sys = parseInt(document.getElementById('bp-sys').value);
+      const dia = parseInt(document.getElementById('bp-dia').value);
+      const pulse = parseInt(document.getElementById('bp-pulse').value) || null;
+
+      if (!sys || !dia || sys < 60 || sys > 250 || dia < 30 || dia > 150) {
+        showToast('Please enter valid BP values');
+        return;
+      }
+
+      const now = new Date();
+      bpReadings.push({
+        date: dateStr(now),
+        time: now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0'),
+        systolic: sys,
+        diastolic: dia,
+        pulse: pulse
+      });
+
+      saveBP();
+      document.getElementById('bp-sys').value = '';
+      document.getElementById('bp-dia').value = '';
+      document.getElementById('bp-pulse').value = '';
+
+      renderBPChart();
+      renderBPTrend();
+      renderBPReadings();
+      showToast('BP reading saved: ' + sys + '/' + dia);
+    });
+
+    // Training notes
+    const notesArea = document.getElementById('training-notes');
+    let notesTimeout;
+    notesArea.addEventListener('input', () => {
+      clearTimeout(notesTimeout);
+      notesTimeout = setTimeout(() => {
+        const ds = dateStr(currentDate);
+        const data = getDayData(ds);
+        data.trainingNotes = notesArea.value;
+        saveAll();
+      }, 500);
+    });
+
+    // Joint ache
+    document.getElementById('joint-ache').addEventListener('click', () => {
+      const ds = dateStr(currentDate);
+      const data = getDayData(ds);
+      data.jointAche = !data.jointAche;
+      saveAll();
+      renderTraining();
+    });
+
+    // Collapsible meal reference
+    document.getElementById('meal-toggle').addEventListener('click', () => {
+      const body = document.getElementById('meal-body');
+      const arrow = document.getElementById('meal-arrow');
+      body.classList.toggle('open');
+      arrow.classList.toggle('open');
+    });
+
+    // Export
+    document.getElementById('btn-export').addEventListener('click', () => {
+      const exportData = {
+        version: 1,
+        exportDate: new Date().toISOString(),
+        startDate: dateStr(startDate),
+        dailyData: allData,
+        bpReadings: bpReadings,
+        labsData: labsData,
+        signsData: signsData
+      };
+
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'health-reset-' + dateStr(new Date()) + '.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Data exported');
+    });
+
+    // Import
+    document.getElementById('btn-import').addEventListener('click', () => {
+      document.getElementById('import-file').click();
+    });
+
+    document.getElementById('import-file').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const data = JSON.parse(ev.target.result);
+          if (data.dailyData) allData = data.dailyData;
+          if (data.bpReadings) bpReadings = data.bpReadings;
+          if (data.labsData) labsData = data.labsData;
+          if (data.signsData) signsData = data.signsData;
+          if (data.startDate) {
+            startDate = parseDate(data.startDate);
+            saveStartDate();
+          }
+          saveAll();
+          saveBP();
+          saveLabs();
+          saveSigns();
+          renderAll();
+          showToast('Data imported successfully');
+        } catch(err) {
+          showToast('Invalid file format');
+        }
+      };
+      reader.readAsText(file);
+      e.target.value = '';
+    });
+
+    // Print
+    document.getElementById('btn-print').addEventListener('click', () => {
+      window.print();
+    });
+
+    // Settings modal
+    document.getElementById('btn-settings').addEventListener('click', () => {
+      document.getElementById('start-date-input').value = dateStr(startDate);
+      document.getElementById('settings-modal').classList.add('show');
+    });
+
+    document.getElementById('modal-cancel').addEventListener('click', () => {
+      document.getElementById('settings-modal').classList.remove('show');
+    });
+
+    document.getElementById('modal-save').addEventListener('click', () => {
+      const val = document.getElementById('start-date-input').value;
+      if (val) {
+        startDate = parseDate(val);
+        saveStartDate();
+        renderAll();
+        showToast('Start date updated');
+      }
+      document.getElementById('settings-modal').classList.remove('show');
+    });
+
+    document.getElementById('settings-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        e.currentTarget.classList.remove('show');
+      }
+    });
+
+    // Hydration check every 10 minutes
+    setInterval(checkHydrationCue, 600000);
+  }
+
+  // ====== Init ======
+  loadAll();
+  initEvents();
+  renderAll();
+
+  // Animate progress ring on load
+  setTimeout(() => {
+    document.getElementById('progress-fill').style.transition = 'stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1)';
+  }, 50);
+
+})();
+</script>
+</body>
+</html>
